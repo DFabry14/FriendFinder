@@ -26,6 +26,7 @@
         #name {
             width: 1050px;
         }
+
         #submit {
             width: 1050px;
         }
@@ -182,7 +183,7 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="submit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -212,11 +213,17 @@
                 scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val(),]
             }
             console.log(userAnswers);
-            $.post("/api/friends", userAnswers, function(data) {
+            $.post("/api/friends", userAnswers, function (data) {
                 console.log("data sent");
                 console.log(data);
             })
+            $('#myModal').on('shown.bs.modal', function () {
+                $('#myInput').trigger('focus')
+            })
         });
+
+        // Cannot get the modal to show up, I've tried everything I can find online, including the jQuery code directly above that is suggested.
+
     </script>
 </body>
 
